@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               String folderLocation = Environment.getExternalStorageDirectory().getAbsolutePath() + "/P09";
                 File targetFile = new File (folderLocation, "data.txt");
                 if (targetFile.exists() == true) {
                     String data = "";
@@ -137,7 +138,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Failed to read!", Toast.LENGTH_LONG).show();
                         e.printStackTrace();
                     }
-                    Toast.makeText(MainActivity.this, "Location details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, data, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Record file doesnt exist", Toast.LENGTH_SHORT).show();
                 }
                 tvLat.setText("Latitude: " + 1.03 + "");
                 tvLong.setText("Longitude: " + 101.5 + "");
